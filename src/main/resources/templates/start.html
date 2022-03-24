@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> <!-- not sure about this -->
+<head>
+    <meta charset="UTF-8">
+    <title>Start</title>
+</head>
+<body>
+<h1>Pokemons i databasen</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Speed</th>
+        <th>HP</th>
+        <th>S.Defence</th>
+        <th>S.Attack</th>
+        <th>Defence</th>
+        <th>Attack</th>
+        <th>Primary Type</th>
+        <th>Secondary Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="Pokemon : ${pokemon}">  <!-- ikke sikker på hvad der er hvad her, tror objekt og tabel navn?? -->
+        <td th:text="${Pokemon.id}">
+            1
+        </td>
+        <td th:text="${Pokemon.name}">s</td>
+        <td th:text="${Pokemon.speed}">hp</td>
+        <td th:text="${Pokemon.hp}">def</td>
+        <td th:text="${Pokemon.specialDefence}">a</td>
+        <td th:text="${Pokemon.specialAttack}">d</td>
+        <td th:text="${Pokemon.defence}">a</td>
+        <td th:text="${Pokemon.attack}">typ</td>
+        <td th:text="${Pokemon.primaryType}">type</td>
+        <td th:text="${Pokemon.secondaryType}">2nd</td>
+    </tr>
+    </tbody>
+
+</table>
+
+
+
+</body>
+</html>
