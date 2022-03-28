@@ -27,6 +27,18 @@ public class Pokemon {
         this.primaryType = primaryType;
         this.secondaryType = secondaryType;
     }
+    public Pokemon(String name, int speed, int hp, int specialDefence, int specialAttack, int defence, int attack, String primaryType, String secondaryType) {
+
+        this.name = name;
+        this.speed = speed;
+        this.hp = hp;
+        this.specialDefence = specialDefence;
+        this.specialAttack = specialAttack;
+        this.defence = defence;
+        this.attack = attack;
+        this.primaryType = primaryType;
+        this.secondaryType = secondaryType;
+    }
 
     public int getDefence() {
         return defence;

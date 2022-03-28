@@ -1,11 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"> <!-- not sure about this -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> <!-- giver hjælp ved brug af thymeleaf -->
 <head>
     <meta charset="UTF-8">
     <title>Start</title>
+    <link rel="stylesheet" href="start.css">
 </head>
 <body>
-<h1>Pokemons i databasen</h1>
+<h1>Known pokemons</h1>
+
+<form action="/start" method="post">
+
+    Add a new pokemon :
+    <input type="text" id="form_name" name="pokemon_name" placeholder="Name" required> <!-- required indtastning -->
+    <input type="number" id="form_speed" name="pokemon_speed" placeholder="Speed" required>
+    <input type="number" id="form_HP" name="pokemon_HP" placeholder="HP" required>
+    <input type="number" id="form_sDef" name="pokemon_sDef" placeholder="S. Defence" required>
+    <input type="number" id="form_sAtt" name="pokemon_sAtt" placeholder="S. Attack" required>
+    <input type="number" id="form_def" name="pokemon_def" placeholder="Defence" required>
+    <input type="number" id="form_att" name="pokemon_att" placeholder="Attack" required>
+    <input type="text" id="form_primary" name="pokemon_primary" placeholder="Primary type" required>
+    <input type="text" id="form_secondary" name="pokemon_secondary" placeholder="Secondary type" required>
+
+    <input type="submit" id="form_button" name="submit">
+
+
+
+</form>
+
 
 <table>
     <thead>
@@ -20,10 +41,12 @@
         <th>Attack</th>
         <th>Primary Type</th>
         <th>Secondary Type</th>
+        <th>Delete</th>
+        <th>Update</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="Pokemon : ${pokemon}">  <!-- ikke sikker på hvad der er hvad her, tror objekt og tabel navn?? -->
+    <tr class="pokemon_row" th:each="Pokemon : ${pokemon}">  <!-- ikke sikker på hvad der er hvad her, tror objekt og tabel navn?? model attribut fra controller -->
         <td th:text="${Pokemon.id}">
             1
         </td>
@@ -36,6 +59,8 @@
         <td th:text="${Pokemon.attack}">typ</td>
         <td th:text="${Pokemon.primaryType}">type</td>
         <td th:text="${Pokemon.secondaryType}">2nd</td>
+        <td><a th:href="@{'/delete/' + ${Pokemon.id}}">Delete</a></td>
+        <td><a th:href="@{'/update/' + ${Pokemon.id}}">Update</a> </td>
     </tr>
     </tbody>
 

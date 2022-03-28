@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Pokemon</title>
+</head>
+<body>
+<h1>Update pokemon</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Speed</th>
+        <th>HP</th>
+        <th>S.Defence</th>
+        <th>S.Attack</th>
+        <th>Defence</th>
+        <th>Attack</th>
+        <th>Primary Type</th>
+        <th>Secondary Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="pokemon_row" th:each="Pokemon : ${pokemon}">
+        <td th:text="${pokemon.id}">1</td>
+        <td th:text="${pokemon.name}">s</td>
+        <td th:text="${pokemon.speed}">hp</td>
+        <td th:text="${pokemon.hp}">def</td>
+        <td th:text="${pokemon.specialDefence}">a</td>
+        <td th:text="${pokemon.specialAttack}">d</td>
+        <td th:text="${pokemon.defence}">a</td>
+        <td th:text="${pokemon.attack}">typ</td>
+        <td th:text="${pokemon.primaryType}">type</td>
+        <td th:text="${pokemon.secondaryType}">2nd</td>
+
+    </tr>
+
+    </tbody>
+
+</table>
+<form action="/update" method="post">
+
+
+    <input type="text" id="form_name" name="pokemon_name" th:value="${pokemon.name}">
+    <input type="number" id="form_speed" name="pokemon_speed" th:value="${pokemon.speed}">
+    <input type="number" id="form_HP" name="pokemon_HP" th:value="${pokemon.hp}">
+    <input type="number" id="form_sDef" name="pokemon_sDef" th:value="${pokemon.specialDefence}">
+    <input type="number" id="form_sAtt" name="pokemon_sAtt" th:value="${pokemon.specialAttack}">
+    <input type="number" id="form_def" name="pokemon_def" th:value="${pokemon.defence}">
+    <input type="number" id="form_att" name="pokemon_att" th:value="${pokemon.attack}">
+    <input type="text" id="form_primary" name="pokemon_primary" th:value="${pokemon.primaryType}">
+    <input type="text" id="form_secondary" name="pokemon_secondary" th:value="${pokemon.secondaryType}">
+
+    <input type="submit" id="form_button" name="submit">
+
+</form>
+
+
+</body>
+</html>
