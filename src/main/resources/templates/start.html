@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Start</title>
-    <link rel="stylesheet" href="start.css">
+    <link rel="stylesheet" th:href="@{/start.css}" href="/static/start.css">
 </head>
 <body>
 <h1>Known pokemons</h1>
@@ -46,7 +46,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr class="pokemon_row" th:each="Pokemon : ${pokemon}">  <!-- ikke sikker på hvad der er hvad her, tror objekt og tabel navn?? model attribut fra controller -->
+    <tr class="pokemon_row" th:each="Pokemon : ${pokemon}">  <!--model attribut fra controller -->
         <td th:text="${Pokemon.id}">
             1
         </td>

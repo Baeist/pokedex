@@ -2,3 +2,6 @@
     background-color: lightblue;
     opacity: 0.99;
 }
+table, th, td{
+    border: 1px solid;
+}

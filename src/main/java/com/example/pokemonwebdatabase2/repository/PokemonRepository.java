@@ -1,6 +1,8 @@
 package com.example.pokemonwebdatabase2.repository;
 
 import com.example.pokemonwebdatabase2.model.Pokemon;
+import org.springframework.context.EnvironmentAware;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -8,19 +10,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class PokemonRepository {
+public class PokemonRepository implements EnvironmentAware {
 
-    private String DBURL = "jdbc:mysql://localhost:3306/pokedex";
-    private String user = "webshop_user";
-    private String passWord = "webshop";
+    private String DBURL;
+    private String user;
+    private String passWord;
 
     private Connection connection;
+    private Environment environment;
+
+    // constructor dependency injection, burde virke med environment.getProperty("..string.."), men gør det ikke her
+    public PokemonRepository(Environment env){
+        environment = env;
+    }
 
     public PokemonRepository() {
         setConnection();
     }
 
+
     public void setConnection() {
+
+        /*
+        DBURL = System.getenv("spring.datasource.url");
+        user = System.getenv("spring.datasource.user");
+        passWord = System.getenv("spring.datasource.password");
+        */
+        DBURL = environment.getProperty("spring.datasource.url");
+        user = environment.getProperty("spring.datasource.user");
+        passWord = environment.getProperty("spring.datasource.password");
+
+
         try {
             connection = DriverManager.getConnection(DBURL, user, passWord);
 
@@ -110,8 +130,6 @@ public class PokemonRepository {
 
     public void updatePokemon(int id, Pokemon updatedPokemon) {
 
-
-
         String sql = "UPDATE pokemon SET name = ?, speed = ?, hp = ?, special_defence = ?," +
                 " special_attack = ?, defence = ?, attack = ?, primary_type = ?, secondary_type = ? WHERE pokedex_number =" + id + ";";
 
@@ -130,8 +148,6 @@ public class PokemonRepository {
         } catch (SQLException s) {
             System.out.println("Update failed " + s);
         }
-
-
     }
 
     public Pokemon retrievePokemonbyID(int id) {
@@ -163,5 +179,10 @@ public class PokemonRepository {
 
         }
         return currentPokemon;
+    }
+
+    @Override
+    public void setEnvironment(Environment environment) {
+        this.environment = environment;
     }
 }

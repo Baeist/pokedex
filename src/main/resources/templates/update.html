@@ -9,7 +9,7 @@
 <table>
     <thead>
     <tr>
-        <th>ID</th>
+
         <th>Name</th>
         <th>Speed</th>
         <th>HP</th>
@@ -23,7 +23,7 @@
     </thead>
     <tbody>
     <tr class="pokemon_row" th:each="Pokemon : ${pokemon}">
-        <td th:text="${pokemon.id}">1</td>
+        <td th:hidden="${pokemon.id}">1</td>                    <!-- hidden id number -->
         <td th:text="${pokemon.name}">s</td>
         <td th:text="${pokemon.speed}">hp</td>
         <td th:text="${pokemon.hp}">def</td>

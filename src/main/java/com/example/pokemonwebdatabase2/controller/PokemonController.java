@@ -32,6 +32,7 @@ public class PokemonController {
     @GetMapping("/update/{id}")
     public String updatePokemon(@PathVariable("id") int updateID, Model model){
         model.addAttribute("pokemon", pokemonRepository.retrievePokemonbyID(updateID));
+
         setPokemonIndexNumber(updateID);
         return "/update";
     }
